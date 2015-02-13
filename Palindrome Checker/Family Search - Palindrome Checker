@@ -1,0 +1,45 @@
+//Palindrome.java
+
+
+import java.util.*;
+
+public class Palindrome
+{
+	public static void main(String[] args)
+	{
+	String word;
+	System.out.println("Type a word and press enter to find out if it is a Palindrome");
+	Scanner scan = new Scanner(System.in);
+	Stack<Character> theStack = new Stack<Character>();
+	
+	word = scan.next();
+	int lengthWord = word.length();
+	int index = 0;
+	char character;
+	
+		if (lengthWord > 0)
+		{
+			if(lengthWord == 1){
+			System.out.println("Whether or not this one letter word is a palindrome is a deep philosophical question that is beyond my capabilities to answer.");
+			scan.close();
+			return;
+			}
+			while(index+1 <= lengthWord/2)
+			{
+			theStack.push(new Character(word.charAt(index)));
+			index ++;
+			}
+			if(lengthWord%2 != 0) index++;
+			while(index < lengthWord)
+			{
+				if(theStack.pop() == word.charAt(index)){index++;}
+				else{System.out.println("Nope, not a palindrome");
+				return;
+				}
+			}
+			System.out.println("Oh yeah, that's a palindrome alright!");
+		} 
+		
+	}
+}
+
